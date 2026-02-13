@@ -1,0 +1,7 @@
+<idea-plugin>
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Project-level git context service, available only when Git4Idea is present -->
+        <projectService
+                serviceImplementation="com.jakubjirak.devjournal.git.GitContextProvider"/>
+    </extensions>
+</idea-plugin>
