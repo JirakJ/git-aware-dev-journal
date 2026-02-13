@@ -1,0 +1,71 @@
+<idea-plugin>
+    <id>com.jakubjirak.devjournal</id>
+    <name>Git-Aware Dev Journal</name>
+    <vendor email="jakub@jirak.dev" url="https://github.com/jakubjirak">Jakub Jirák</vendor>
+
+    <description><![CDATA[
+    <h2>Git-Aware Dev Journal</h2>
+    <p>IDE-native development journal with deep Git integration. Every note is linked to commit
+    hashes, branches, and code context. Auto-captures entries from conventional commits, generates
+    branch narratives and standup summaries.</p>
+
+    <h3>Features</h3>
+    <ul>
+        <li><b>Journal entries</b> — notes, decisions, TODOs, blockers, insights, questions</li>
+        <li><b>Git-linked</b> — entries tied to commit hashes, branches, and file positions</li>
+        <li><b>Auto-capture</b> — parses conventional commits (feat:, fix:, docs:, etc.)</li>
+        <li><b>Branch narratives</b> — automatic story of work done on a branch</li>
+        <li><b>Standup generator</b> — "What I did yesterday" from commits + notes (Pro)</li>
+        <li><b>Timeline view</b> — tool window with filtering, search, and quick entry</li>
+    </ul>
+
+    <h3>Part of Developer Productivity Suite</h3>
+    <p>Works alongside other development tools for comprehensive workflow support.</p>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends optional="true" config-file="git-features.xml">Git4Idea</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Tool window -->
+        <toolWindow
+                id="Dev Journal"
+                anchor="bottom"
+                secondary="true"
+                icon="AllIcons.Actions.Edit"
+                factoryClass="com.jakubjirak.devjournal.ui.DevJournalToolWindowFactory"/>
+
+        <!-- Settings page -->
+        <applicationConfigurable
+                id="com.jakubjirak.devjournal.settings"
+                parentId="tools"
+                displayName="Git-Aware Dev Journal"
+                instance="com.jakubjirak.devjournal.settings.DevJournalConfigurable"/>
+
+        <!-- Persistent settings -->
+        <applicationService
+                serviceImplementation="com.jakubjirak.devjournal.settings.DevJournalSettings"/>
+
+        <!-- Journal store (project-level) -->
+        <projectService
+                serviceImplementation="com.jakubjirak.devjournal.store.JournalStore"/>
+
+        <!-- Notification group -->
+        <notificationGroup
+                id="Dev Journal"
+                displayType="BALLOON"
+                toolWindowId="Dev Journal"/>
+    </extensions>
+
+    <actions>
+        <action id="com.jakubjirak.devjournal.AddJournalEntryAction"
+                class="com.jakubjirak.devjournal.ui.AddJournalEntryAction"
+                text="Add Journal Entry"
+                description="Add a development journal entry at the current cursor position"
+                icon="AllIcons.General.Add">
+            <keyboard-shortcut first-keystroke="control shift J" keymap="$default"/>
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
