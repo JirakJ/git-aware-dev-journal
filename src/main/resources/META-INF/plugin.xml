@@ -1,5 +1,6 @@
 <idea-plugin>
     <id>com.jakubjirak.devjournal</id>
+    <product-descriptor code="PDEVJOURNAL" release-date="20260215" release-version="20262" optional="true"/>
     <name>Git-Aware Dev Journal</name>
     <vendor email="jakub@jirak.dev" url="https://github.com/jakubjirak">Jakub Jirák</vendor>
 
