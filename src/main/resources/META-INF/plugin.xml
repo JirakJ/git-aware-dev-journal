@@ -5,24 +5,35 @@
     <vendor email="jakub@jirak.dev" url="https://github.com/jakubjirak">Jakub Jirák</vendor>
 
     <description><![CDATA[
-    <h2>Git-Aware Dev Journal</h2>
-    <p>IDE-native development journal with deep Git integration. Every note is linked to commit
-    hashes, branches, and code context. Auto-captures entries from conventional commits, generates
-    branch narratives and standup summaries.</p>
+<h2>Git-Aware Dev Journal</h2>
+<p>
+  Capture your development thinking as it happens. Git-Aware Dev Journal is a lightweight IDE-native
+  journal that automatically links your notes, decisions, and TODOs to Git commits and branches — building
+  a narrative of your work that's always in context.
+</p>
 
-    <h3>Features</h3>
-    <ul>
-        <li><b>Journal entries</b> — notes, decisions, TODOs, blockers, insights, questions</li>
-        <li><b>Git-linked</b> — entries tied to commit hashes, branches, and file positions</li>
-        <li><b>Auto-capture</b> — parses conventional commits (feat:, fix:, docs:, etc.)</li>
-        <li><b>Branch narratives</b> — automatic story of work done on a branch</li>
-        <li><b>Standup generator</b> — "What I did yesterday" from commits + notes (Pro)</li>
-        <li><b>Timeline view</b> — tool window with filtering, search, and quick entry</li>
-    </ul>
+<h2>Key Features</h2>
+<ul>
+  <li><b>6 Entry Types</b> — Notes, Decisions, TODOs, Blockers, Insights, and Questions</li>
+  <li><b>Git Integration</b> — Entries auto-link to current commit hash and branch</li>
+  <li><b>Auto-Capture</b> — Automatically creates entries from conventional commit messages</li>
+  <li><b>Branch Narratives</b> — View the complete story of a branch's development</li>
+  <li><b>Timeline View</b> — Chronological journal with filtering by type, branch, or date</li>
+  <li><b>Search</b> — Full-text search across all journal entries</li>
+</ul>
 
-    <h3>Part of Developer Productivity Suite</h3>
-    <p>Works alongside other development tools for comprehensive workflow support.</p>
-    ]]></description>
+<h2>Why Git-Aware Dev Journal?</h2>
+<p>
+  Context switches destroy productivity. A dev journal linked to Git preserves your thought process and
+  decisions, making it easier to resume work, hand off features, and write better pull request descriptions.
+</p>
+
+<h2>Free vs Pro</h2>
+<ul>
+  <li><b>Free:</b> Journaling with all entry types, Git linking, timeline view, search</li>
+  <li><b>Pro:</b> Standup report generation, team journal sharing, branch narrative export, weekly summaries, and integration with issue trackers</li>
+</ul>
+]]></description>
 
     <depends>com.intellij.modules.platform</depends>
     <depends optional="true" config-file="git-features.xml">Git4Idea</depends>
