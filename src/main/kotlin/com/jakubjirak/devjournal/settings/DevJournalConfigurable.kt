@@ -2,6 +2,7 @@ package com.jakubjirak.devjournal.settings
 
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory
 import com.intellij.openapi.options.BoundConfigurable
+import com.intellij.openapi.ui.TextFieldWithBrowseButton
 import com.intellij.ui.dsl.builder.*
 
 /**
@@ -28,10 +29,10 @@ class DevJournalConfigurable : BoundConfigurable("Git-Aware Dev Journal") {
 
         group("Storage") {
             row("Journal directory:") {
-                textFieldWithBrowseButton(
-                    FileChooserDescriptorFactory.createSingleFolderDescriptor()
-                        .withTitle("Select Journal Directory")
-                )
+                cell(TextFieldWithBrowseButton().apply {
+                    addBrowseFolderListener("Select Journal Directory", null, null,
+                        FileChooserDescriptorFactory.createSingleFolderDescriptor())
+                })
                     .bindText(settings::storagePath)
                     .comment("Path relative to the project root where journal files are stored")
             }
