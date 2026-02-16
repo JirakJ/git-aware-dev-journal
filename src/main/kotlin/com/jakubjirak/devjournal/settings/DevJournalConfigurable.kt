@@ -30,8 +30,10 @@ class DevJournalConfigurable : BoundConfigurable("Git-Aware Dev Journal") {
         group("Storage") {
             row("Journal directory:") {
                 cell(TextFieldWithBrowseButton().apply {
-                    addBrowseFolderListener("Select Journal Directory", null, null,
-                        FileChooserDescriptorFactory.createSingleFolderDescriptor())
+                    addBrowseFolderListener(
+                        com.intellij.openapi.ui.TextBrowseFolderListener(
+                            FileChooserDescriptorFactory.createSingleFolderDescriptor()
+                                .withTitle("Select Journal Directory"), null))
                 })
                     .bindText(settings::storagePath)
                     .comment("Path relative to the project root where journal files are stored")
