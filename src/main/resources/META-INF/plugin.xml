@@ -2,38 +2,47 @@
     <id>com.jakubjirak.devjournal</id>
     <product-descriptor code="PDEVJOURNAL" release-date="20260215" release-version="20262" optional="true"/>
     <name>Git-Aware Dev Journal</name>
-    <vendor email="jakub@jirak.dev" url="https://github.com/jakubjirak">Jakub Jirák</vendor>
+    <vendor email="support@jakubjirak.com" url="https://github.com/jakubjirak">Jakub Jirák</vendor>
 
     <description><![CDATA[
-<h2>Git-Aware Dev Journal</h2>
-<p>
-  Capture your development thinking as it happens. Git-Aware Dev Journal is a lightweight IDE-native
-  journal that automatically links your notes, decisions, and TODOs to Git commits and branches — building
-  a narrative of your work that's always in context.
-</p>
+<h2>Git-Aware Dev Journal — Remember Why You Wrote That Code</h2>
 
-<h2>Key Features</h2>
+<p>A development journal that links notes to your git context. Every entry captures the commit, branch, 
+and file position automatically. Stop losing the reasoning behind your code decisions.</p>
+
+<h3>Core Features</h3>
 <ul>
-  <li><b>6 Entry Types</b> — Notes, Decisions, TODOs, Blockers, Insights, and Questions</li>
-  <li><b>Git Integration</b> — Entries auto-link to current commit hash and branch</li>
-  <li><b>Auto-Capture</b> — Automatically creates entries from conventional commit messages</li>
-  <li><b>Branch Narratives</b> — View the complete story of a branch's development</li>
-  <li><b>Timeline View</b> — Chronological journal with filtering by type, branch, or date</li>
-  <li><b>Search</b> — Full-text search across all journal entries</li>
+    <li><b>Git-Linked Notes</b> — Entries auto-linked to commit hash, branch, and file position</li>
+    <li><b>6 Entry Types</b> — Notes, Decisions, TODOs, Blockers, Insights, Questions</li>
+    <li><b>Auto-Capture</b> — Conventional commits parsed into journal entries automatically</li>
+    <li><b>Branch Narratives</b> — Auto-generated story of your work on each branch</li>
+    <li><b>Timeline View</b> — Chronological view with search and filters</li>
+    <li><b>Code Hover Context</b> — See why code was written by hovering over annotated lines</li>
 </ul>
 
-<h2>Why Git-Aware Dev Journal?</h2>
-<p>
-  Context switches destroy productivity. A dev journal linked to Git preserves your thought process and
-  decisions, making it easier to resume work, hand off features, and write better pull request descriptions.
-</p>
-
-<h2>Free vs Pro</h2>
+<h3>Pro Features ($5/month)</h3>
 <ul>
-  <li><b>Free:</b> Journaling with all entry types, Git linking, timeline view, search</li>
-  <li><b>Pro:</b> Standup report generation, team journal sharing, branch narrative export, weekly summaries, and integration with issue trackers</li>
+    <li>Standup generator (Markdown/Slack format)</li>
+    <li>PR/MR summary generator</li>
+    <li>Unlimited notes (free: 50 per project)</li>
+    <li>Cross-device sync</li>
+    <li>Team sharing via .dev-journal/ directory</li>
+    <li>Export (Markdown, JSON, CSV)</li>
 </ul>
-]]></description>
+
+<h3>Requirements</h3>
+<ul>
+    <li>IntelliJ IDEA 2024.1+ (or any JetBrains IDE)</li>
+    <li>Git repository</li>
+</ul>
+
+<h3>Support</h3>
+<p>
+    <a href="https://github.com/JirakJ/git-aware-dev-journal/issues">Documentation</a> |
+    <a href="https://github.com/JirakJ/git-aware-dev-journal/issues">Issue Tracker</a> |
+    <a href="https://github.com/JirakJ/git-aware-dev-journal/issues">Contact Support</a>
+</p>
+    ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
     <depends optional="true" config-file="git-features.xml">Git4Idea</depends>
@@ -80,4 +89,20 @@
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
         </action>
     </actions>
+
+    <change-notes><![CDATA[
+        <h3>What's New</h3>
+        <ul>
+            <li><b>Git-Linked Journal Entries</b> - Notes automatically linked to commit hash, branch, and file position</li>
+            <li><b>Six Entry Types</b> - Notes, Decisions, TODOs, Blockers, Insights, and Questions for organized journaling</li>
+            <li><b>Auto-Capture from Commits</b> - Conventional commits (feat, fix, docs, refactor) are automatically parsed into journal entries</li>
+            <li><b>Branch Narratives</b> - Auto-generated story of your work on each branch</li>
+            <li><b>Timeline View</b> - Chronological view of all entries with filtering and search</li>
+            <li><b>Code Hover Context</b> - See why code was written by hovering over annotated lines</li>
+            <li><b>Blame View Integration</b> - Extra note column in git blame showing associated journal entries</li>
+            <li><b>Standup Generator (Pro)</b> - Generate Markdown or Slack-compatible standup reports from your journal</li>
+            <li><b>PR Summary Generator (Pro)</b> - Create pull request descriptions from journal entries</li>
+            <li><b>Team Sharing (Pro)</b> - Share journal entries via .dev-journal/ directory in your repository</li>
+        </ul>
+    ]]></change-notes>
 </idea-plugin>
