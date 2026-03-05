@@ -4,13 +4,12 @@
     <name>Git-Aware Dev Journal</name>
     <vendor email="support@jakubjirak.com" url="https://github.com/jakubjirak">Jakub Jirák</vendor>
 
-    <description><![CDATA[
-<h2>Git-Aware Dev Journal — Remember Why You Wrote That Code</h2>
+    <description><![CDATA[<h2>Git-Aware Dev Journal — Remember Why You Wrote That Code</h2>
 
 <p>A development journal that links notes to your git context. Every entry captures the commit, branch, 
 and file position automatically. Stop losing the reasoning behind your code decisions.</p>
 
-<h3>Core Features</h3>
+<h3>Features</h3>
 <ul>
     <li><b>Git-Linked Notes</b> — Entries auto-linked to commit hash, branch, and file position</li>
     <li><b>6 Entry Types</b> — Notes, Decisions, TODOs, Blockers, Insights, Questions</li>
@@ -20,7 +19,6 @@ and file position automatically. Stop losing the reasoning behind your code deci
     <li><b>Code Hover Context</b> — See why code was written by hovering over annotated lines</li>
 </ul>
 
-<h3>Pro Features ($5/month)</h3>
 <ul>
     <li>Standup generator (Markdown/Slack format)</li>
     <li>PR/MR summary generator</li>
@@ -41,8 +39,7 @@ and file position automatically. Stop losing the reasoning behind your code deci
     <a href="https://github.com/JirakJ/git-aware-dev-journal/issues">Documentation</a> |
     <a href="https://github.com/JirakJ/git-aware-dev-journal/issues">Issue Tracker</a> |
     <a href="https://github.com/JirakJ/git-aware-dev-journal/issues">Contact Support</a>
-</p>
-    ]]></description>
+</p>]]></description>
 
     <depends>com.intellij.modules.platform</depends>
     <depends optional="true" config-file="git-features.xml">Git4Idea</depends>
@@ -76,6 +73,9 @@ and file position automatically. Stop losing the reasoning behind your code deci
                 id="Dev Journal"
                 displayType="BALLOON"
                 toolWindowId="Dev Journal"/>
+    
+        <notificationGroup id="Git-Aware Dev Journal Feedback" displayType="BALLOON"/>
+        <projectActivity implementation="com.jakubjirak.devjournal.feedback.FeedbackNotifier"/>
     </extensions>
 
     <actions>
