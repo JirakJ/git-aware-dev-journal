@@ -34,7 +34,7 @@
 - Editor context menu integration for adding entries
 - JSON-based storage in `.dev-journal/` directory (Git-tracked, merge-friendly)
 - Configurable auto-capture, standup time window, and storage path
-- Standup generator — "What I did yesterday" from commits and notes (Pro)
-- PR/MR summary generator with grouped output by type (Pro)
-- Cross-device sync and team sharing (Pro)
-- Advanced search, filters, and export to Markdown/JSON/CSV (Pro)
+- Standup generator — "What I did yesterday" from commits and notes
+- PR/MR summary generator with grouped output by type
+- Cross-device sync and team sharing
+- Advanced search, filters, and export to Markdown/JSON/CSV

@@ -4,7 +4,6 @@ import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.DialogWrapper
 import com.jakubjirak.devjournal.git.GitContextProvider
-import com.jakubjirak.devjournal.licensing.FreemiumGate
 import com.jakubjirak.devjournal.model.EntryType
 import com.jakubjirak.devjournal.store.JournalStore
 import java.awt.GridBagConstraints
@@ -74,14 +73,6 @@ class AddEntryDialog(
             return
         }
 
-        val store = JournalStore.getInstance(project)
-        val freemiumGate = FreemiumGate.getInstance()
-
-        if (!freemiumGate.canAddEntry(store.getEntryCount())) {
-            LOG.info("Entry limit reached for free tier")
-            return
-        }
-
         val entryType = typeCombo.selectedItem as EntryType
         val tags = tagsField.text
             ?.split(",")
@@ -99,6 +90,7 @@ class AddEntryDialog(
             // Git4Idea not available
         }
 
+        val store = JournalStore.getInstance(project)
         store.newEntry(
             text = text,
             entryType = entryType,
