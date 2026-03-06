@@ -1,6 +1,5 @@
 <idea-plugin>
     <id>com.jakubjirak.devjournal</id>
-    <product-descriptor code="PDEVJOURNAL" release-date="20260215" release-version="20262" optional="true"/>
     <name>Git-Aware Dev Journal</name>
     <vendor email="support@jakubjirak.com" url="https://github.com/jakubjirak">Jakub Jirák</vendor>
 
@@ -22,7 +21,7 @@ and file position automatically. Stop losing the reasoning behind your code deci
 <ul>
     <li>Standup generator (Markdown/Slack format)</li>
     <li>PR/MR summary generator</li>
-    <li>Unlimited notes (free: 50 per project)</li>
+    <li>Unlimited notes</li>
     <li>Cross-device sync</li>
     <li>Team sharing via .dev-journal/ directory</li>
     <li>Export (Markdown, JSON, CSV)</li>
@@ -100,9 +99,9 @@ and file position automatically. Stop losing the reasoning behind your code deci
             <li><b>Timeline View</b> - Chronological view of all entries with filtering and search</li>
             <li><b>Code Hover Context</b> - See why code was written by hovering over annotated lines</li>
             <li><b>Blame View Integration</b> - Extra note column in git blame showing associated journal entries</li>
-            <li><b>Standup Generator (Pro)</b> - Generate Markdown or Slack-compatible standup reports from your journal</li>
-            <li><b>PR Summary Generator (Pro)</b> - Create pull request descriptions from journal entries</li>
-            <li><b>Team Sharing (Pro)</b> - Share journal entries via .dev-journal/ directory in your repository</li>
+            <li><b>Standup Generator</b> - Generate Markdown or Slack-compatible standup reports from your journal</li>
+            <li><b>PR Summary Generator</b> - Create pull request descriptions from journal entries</li>
+            <li><b>Team Sharing</b> - Share journal entries via .dev-journal/ directory in your repository</li>
         </ul>
     ]]></change-notes>
 </idea-plugin>

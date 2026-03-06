@@ -8,17 +8,13 @@
 
 ## ✨ Features
 
-### Free Tier
 - **Journal entries** — notes, decisions, TODOs, blockers, insights, questions
 - **Git-linked notes** — every entry tied to a commit hash, branch, and file position
 - **Auto-capture** — parses conventional commits (`feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `chore:`, `perf:`)
-- **Branch narratives** — automatic story of work done on a branch (read-only)
+- **Branch narratives** — automatic story of work done on a branch
 - **Timeline view** — chronological overview with filtering and search in the Dev Journal tool window
 - **Commit linking & blame view** — notes visible in Git blame as an extra column
 - **Code hover** — "Why did I write this?" context on hover
-- **Max 50 notes per project**
-
-### Pro Tier ($5/month)
 - **Standup generator** — "What I did yesterday" from commits + notes (Markdown, plain text, Slack-compatible)
 - **PR/MR summary generator** — release notes grouped by type (features, fixes, chores)
 - **Unlimited notes** — no cap on journal entries per project
@@ -79,7 +75,7 @@ Navigate to a feature branch in the Dev Journal tool window to see an automatica
 ### Code Hover — "Why Did I Write This?"
 Hover over any line of code to see journal entries from when that code was last modified, including commit context, author, and attached notes.
 
-### Standup Generator (Pro)
+### Standup Generator
 Generate a "What I did yesterday" report from your commits and notes. Configurable time range and output format (Markdown, plain text, Slack-compatible).
 
 ### Storage
