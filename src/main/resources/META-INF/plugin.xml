@@ -2,6 +2,8 @@
     <id>com.jakubjirak.devjournal</id>
     <name>Git-Aware Dev Journal</name>
     <vendor email="support@jakubjirak.com" url="https://github.com/jakubjirak">Jakub Jirák</vendor>
+    <product-descriptor code="PGITAWAREDEVJOU" release-date="20260417" release-version="20263" optional="true"/>
+
 
     <description><![CDATA[<h2>Git-Aware Dev Journal — Remember Why You Wrote That Code</h2>
 
