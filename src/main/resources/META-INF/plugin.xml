@@ -1,8 +1,7 @@
 <idea-plugin>
     <id>com.jakubjirak.devjournal</id>
     <name>Git-Aware Dev Journal</name>
-    <vendor email="support@jakubjirak.com" url="https://github.com/jakubjirak">Jakub Jirák</vendor>
-    <product-descriptor code="PGITAWAREDEVJOU" release-date="20260417" release-version="20263" optional="true"/>
+    <vendor email="support@jakubjirak.com" url="https://github.com/JirakJ/git-aware-dev-journal">Jakub Jirák</vendor>
 
 
     <description><![CDATA[<h2>Git-Aware Dev Journal — Remember Why You Wrote That Code</h2>
@@ -92,6 +91,8 @@ and file position automatically. Stop losing the reasoning behind your code deci
     </actions>
 
     <change-notes><![CDATA[
+        <h3>2026.8.0</h3><ul><li>The plugin is now completely free — all features unlocked, no license needed.</li><li>Source code is now open source under Apache-2.0: https://github.com/JirakJ/git-aware-dev-journal</li></ul>
+
         <h3>What's New</h3>
         <ul>
             <li><b>Git-Linked Journal Entries</b> - Notes automatically linked to commit hash, branch, and file position</li>

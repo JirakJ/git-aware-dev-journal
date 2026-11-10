@@ -1,8 +1,10 @@
 # Git-Aware Dev Journal
 
 [![Build](https://github.com/JirakJ/git-aware-dev-journal/actions/workflows/build.yml/badge.svg)](https://github.com/JirakJ/git-aware-dev-journal/actions/workflows/build.yml)
-[![Version](https://img.shields.io/badge/version-2026.2.1-blue.svg)](https://github.com/JirakJ/git-aware-dev-journal/releases)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/version-2026.8.0-blue.svg)](https://github.com/JirakJ/git-aware-dev-journal/releases)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
+
+> **Free & open source** — every feature is unlocked for everyone, no license needed. Licensed under [Apache-2.0](LICENSE).
 
 > IDE-native development journal with deep Git integration — every note linked to commits, branches, and code.
 
@@ -101,9 +103,13 @@ cd git-aware-dev-journal
 ./gradlew build
 ```
 
-## 📝 License
+## License
 
-MIT — [LICENSE](LICENSE)
+Apache License 2.0 — see [LICENSE](LICENSE) and [NOTICE](NOTICE). Copyright 2026 Jakub Jirák.
+
+## Contributing
+
+Issues and pull requests are welcome at https://github.com/JirakJ/git-aware-dev-journal.
 
 ## 👤 Author
 
