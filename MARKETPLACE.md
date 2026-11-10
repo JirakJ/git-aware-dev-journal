@@ -24,48 +24,16 @@ Ever looked at code and wondered <em>"Why was this written this way?"</em> Git b
   <li><strong>Timeline View</strong> — Searchable, filterable Dev Journal tool window with full project history at a glance.</li>
   <li><strong>Git Blame Integration</strong> — Journal notes appear as an extra column in Git blame. Hover over any line to see the context behind it.</li>
   <li><strong>Code Hover Context</strong> — "Why did I write this?" answers appear on hover, right where you need them.</li>
-  <li><strong>Standup Generator</strong> — One-click "What I did yesterday" reports in Markdown, plain text, or Slack-compatible format. <em>(Pro)</em></li>
-  <li><strong>PR/MR Summary Generator</strong> — Auto-generate release notes grouped by type from your journal entries. <em>(Pro)</em></li>
-  <li><strong>Cross-Device Sync</strong> — Your journal follows you across machines. <em>(Pro)</em></li>
-  <li><strong>Team Sharing</strong> — Share notes via a committed <code>.dev-journal/</code> directory so the whole team benefits. <em>(Pro)</em></li>
-  <li><strong>Advanced Search &amp; Filters</strong> — Filter by author, branch, date range, and entry type. <em>(Pro)</em></li>
-  <li><strong>Export Options</strong> — Export to Markdown, JSON, or CSV. <em>(Pro)</em></li>
-  <li><strong>Audit Trail</strong> — Full change tracking for compliance. <em>(Enterprise)</em></li>
-  <li><strong>Compliance Export &amp; Admin Dashboard</strong> — Enterprise-grade governance. <em>(Enterprise)</em></li>
-  <li><strong>SSO Integration &amp; Custom Retention Policies</strong> — Fits your organization's security requirements. <em>(Enterprise)</em></li>
+  <li><strong>Standup Generator</strong> — One-click "What I did yesterday" reports in Markdown, plain text, or Slack-compatible format.</li>
+  <li><strong>PR/MR Summary Generator</strong> — Auto-generate release notes grouped by type from your journal entries.</li>
+  <li><strong>Cross-Device Sync</strong> — Your journal follows you across machines.</li>
+  <li><strong>Team Sharing</strong> — Share notes via a committed <code>.dev-journal/</code> directory so the whole team benefits.</li>
+  <li><strong>Advanced Search &amp; Filters</strong> — Filter by author, branch, date range, and entry type.</li>
+  <li><strong>Export Options</strong> — Export to Markdown, JSON, or CSV.</li>
 </ul>
 
-<h3>Free Tier</h3>
-<p>Get started at no cost with up to <strong>50 notes per project</strong>:</p>
-<ul>
-  <li>All 6 entry types (notes, decisions, TODOs, blockers, insights, questions)</li>
-  <li>Git-linked notes tied to commits, branches, and files</li>
-  <li>Auto-capture from conventional commits</li>
-  <li>Branch narratives (read-only)</li>
-  <li>Timeline view with filtering and search</li>
-  <li>Git blame integration and code hover context</li>
-</ul>
-
-<h3>Pro Tier — $5/month (or $49/year)</h3>
-<ul>
-  <li><strong>Unlimited notes</strong> — no project cap</li>
-  <li>Standup report generator (Markdown, plain text, Slack)</li>
-  <li>PR/MR summary and release note generation</li>
-  <li>Cross-device sync</li>
-  <li>Team sharing via shared <code>.dev-journal/</code> directory</li>
-  <li>Advanced search &amp; filters (author, branch, date range, type)</li>
-  <li>Export to Markdown, JSON, CSV</li>
-</ul>
-
-<h3>Enterprise Tier — $12/dev/month</h3>
-<ul>
-  <li>Everything in Pro</li>
-  <li>Audit trail — who changed what, when</li>
-  <li>Compliance export</li>
-  <li>Admin dashboard</li>
-  <li>Custom retention policies</li>
-  <li>SSO integration</li>
-</ul>
+<h3>Free &amp; Open Source</h3>
+<p>Every feature is free for everyone — no license, no limits. The source code is available under the Apache-2.0 license at <a href="https://github.com/JirakJ/git-aware-dev-journal">github.com/JirakJ/git-aware-dev-journal</a>. Issues and pull requests are welcome.</p>
 
 <h3>Getting Started</h3>
 <ol>
@@ -87,11 +55,8 @@ git, journal, documentation, standup, developer-tools
 Version Control
 
 ## Pricing
-| Tier | Price | Features |
-|------|-------|----------|
-| Free | $0 | Up to 50 notes, Git-linked entries, auto-capture, branch narratives, timeline view, blame integration, code hover |
-| Pro | $5/month or $49/year | Unlimited notes, standup generator, PR summaries, cross-device sync, team sharing, advanced search, export |
-| Enterprise | $12/dev/month | Audit trail, compliance export, admin dashboard, custom retention, SSO integration |
+
+Free & open source (Apache-2.0) — every feature is available to everyone, no license needed.
 
 ## Screenshots Needed
 1. **Dev Journal Tool Window** — Timeline view showing a mix of entry types (notes, decisions, TODOs, blockers) with Git commit links and branch filters active.
