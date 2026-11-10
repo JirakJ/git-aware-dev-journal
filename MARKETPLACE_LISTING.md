@@ -46,32 +46,23 @@
 
 #### 🔍 Search & Timeline
 - **Timeline view** with chronological overview, filtering, and full-text search
-- Filter by author, branch, date range, and entry type (Pro)
+- Filter by author, branch, date range, and entry type
 
-#### 📊 Reporting (Pro)
+#### 📊 Reporting
 - **Standup generator** — "What I did yesterday" in Markdown, plain text, or Slack format
 - **PR/MR summary generator** — release notes grouped by type (features, fixes, chores)
 - **Weekly summaries** for managers and leads
 
-#### 🔄 Collaboration (Pro)
+#### 🔄 Collaboration
 - **Cross-device sync** — notes follow you between machines
 - **Team sharing** via shared `.dev-journal/` directory
 - **Export** to Markdown, JSON, and CSV
-
-#### 🏢 Enterprise
-- **Audit trail** — who changed what, when
-- **Compliance export** and custom retention policies
-- **Admin dashboard** and SSO integration
 
 ---
 
 ### 💰 Pricing Model
 
-| Tier           | Price                  | Highlights                                      |
-|----------------|------------------------|--------------------------------------------------|
-| **Free**       | $0                     | Up to 50 notes/project, 6 entry types, Git linking, timeline view, full-text search |
-| **Pro**        | $5/month or $49/year   | Unlimited notes, standup & PR generators, cross-device sync, team sharing, advanced filters, export |
-| **Enterprise** | $12/dev/month          | Audit trail, compliance export, admin dashboard, custom retention, SSO |
+Free & open source (Apache-2.0) — every feature is available to everyone, no license needed.
 
 ---
 
@@ -80,7 +71,6 @@
 - **Solo developers** who want to preserve context across sessions
 - **Team leads** who need effortless standup and PR reports
 - **Engineering teams** requiring onboarding and handoff documentation
-- **Regulated industries** needing compliance audit trails (Enterprise)
 
 ---
 
@@ -114,8 +104,8 @@
 | 3 | **Git Blame Integration** — Journal notes displayed as an extra column alongside standard Git blame |
 | 4 | **Code Hover Context** — Tooltip showing "Why did I write this?" linked journal entry on code hover |
 | 5 | **Branch Narrative** — Auto-generated story of a feature branch's development history |
-| 6 | **Standup Generator (Pro)** — One-click standup report in Markdown/Slack format |
-| 7 | **PR Summary Generator (Pro)** — Release notes grouped by features, fixes, and chores |
+| 6 | **Standup Generator** — One-click standup report in Markdown/Slack format |
+| 7 | **PR Summary Generator** — Release notes grouped by features, fixes, and chores |
 | 8 | **Settings Panel** — Configuration for auto-capture, storage path, and standup time window |
 
 ---
@@ -172,7 +162,6 @@
 - [ ] Screenshots captured (minimum 5, 1280×800px recommended)
 - [ ] Plugin signed with JetBrains Marketplace certificate
 - [ ] Changelog written for initial release
-- [ ] Pricing tiers configured in JetBrains Marketplace
 - [ ] Vendor verified on JetBrains Marketplace
 - [ ] Compatibility range tested (2024.3+)
 - [ ] License agreement uploaded (MIT)
