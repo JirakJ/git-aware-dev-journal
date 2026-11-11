@@ -15,7 +15,6 @@ import com.intellij.openapi.components.Storage
 class DevJournalSettings : PersistentStateComponent<DevJournalSettings.State> {
 
     data class State(
-        var autoCaptureEnabled: Boolean = true,
         var standupTimeWindow: Int = 24,
         var storagePath: String = ".dev-journal",
     )
@@ -27,10 +26,6 @@ class DevJournalSettings : PersistentStateComponent<DevJournalSettings.State> {
     override fun loadState(state: State) {
         this.state = state
     }
-
-    var autoCaptureEnabled: Boolean
-        get() = state.autoCaptureEnabled
-        set(value) { state.autoCaptureEnabled = value }
 
     var standupTimeWindow: Int
         get() = state.standupTimeWindow

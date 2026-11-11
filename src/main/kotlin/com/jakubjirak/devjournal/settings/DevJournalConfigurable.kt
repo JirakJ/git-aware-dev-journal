@@ -15,15 +15,10 @@ class DevJournalConfigurable : BoundConfigurable("Git-Aware Dev Journal") {
         val settings = DevJournalSettings.getInstance()
 
         group("General") {
-            row {
-                checkBox("Auto-capture from conventional commits")
-                    .bindSelected(settings::autoCaptureEnabled)
-                    .comment("Automatically create journal entries from conventional commit messages")
-            }
             row("Standup time window (hours):") {
                 spinner(1..168)
                     .bindIntValue(settings::standupTimeWindow)
-                    .comment("How far back to look when generating standup summaries (max 1 week)")
+                    .comment("How far back the tool window's Copy Standup button looks (max 1 week)")
             }
         }
 
@@ -36,7 +31,7 @@ class DevJournalConfigurable : BoundConfigurable("Git-Aware Dev Journal") {
                                 .withTitle("Select Journal Directory"), null))
                 })
                     .bindText(settings::storagePath)
-                    .comment("Path relative to the project root where journal files are stored")
+                    .comment("Relative to the project root, or absolute. Takes effect after reopening the project.")
             }
         }
     }

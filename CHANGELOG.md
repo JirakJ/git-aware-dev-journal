@@ -1,5 +1,20 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+- **Copy Standup** and **Copy Branch Summary** buttons in the Dev Journal tool window (the standup time-window setting now has an effect).
+
+### Fixed
+- The tool window now refreshes when an entry is added via the editor action / shortcut.
+- An absolute journal directory chosen in Settings was resolved under the project root.
+- Journal files with missing fields (e.g. no `tags`) no longer cause errors when searching.
+- File paths outside the project were shortened when they merely shared a name prefix with the project directory.
+
+### Removed
+- The "Auto-capture from conventional commits" setting — it never had any effect.
+- Documentation of features that do not exist (code hover, blame column, PR summaries, export, sync).
+
 ## [2026.8.0] - 2026-11-10
 
 ### Changed
