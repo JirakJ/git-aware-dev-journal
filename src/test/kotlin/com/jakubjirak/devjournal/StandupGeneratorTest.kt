@@ -3,6 +3,7 @@ package com.jakubjirak.devjournal
 import com.jakubjirak.devjournal.model.EntryType
 import com.jakubjirak.devjournal.model.JournalEntry
 import com.jakubjirak.devjournal.standup.StandupGenerator
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
@@ -83,6 +84,39 @@ class StandupGeneratorTest {
         assertFalse(result.contains("Branches worked on"))
     }
 
+    @Test
+    fun `generate keeps only entries inside the time window newest first`() {
+        val now = 100 * HOUR
+        val entries = listOf(
+            createEntry("too old", EntryType.NOTE).copy(timestamp = now - 25 * HOUR),
+            createEntry("older", EntryType.NOTE).copy(timestamp = now - 20 * HOUR),
+            createEntry("newest", EntryType.NOTE).copy(timestamp = now - 1 * HOUR),
+        )
+        val result = StandupGenerator.generate(entries, timeWindowHours = 24, nowMillis = now)
+        assertFalse(result.contains("too old"))
+        assertTrue(result.indexOf("newest") in 0 until result.indexOf("older"))
+    }
+
+    @Test
+    fun `generate reports the window when nothing is recent`() {
+        val now = 100 * HOUR
+        val entries = listOf(createEntry("ancient", EntryType.NOTE).copy(timestamp = 0))
+        val result = StandupGenerator.generate(entries, timeWindowHours = 8, nowMillis = now)
+        assertEquals("No activity recorded in the last 8 hours.", result)
+    }
+
+    @Test
+    fun `generate clamps a non-positive window to one hour`() {
+        val now = 100 * HOUR
+        val entries = listOf(createEntry("recent", EntryType.NOTE).copy(timestamp = now - HOUR / 2))
+        assertTrue(StandupGenerator.generate(entries, timeWindowHours = 0, nowMillis = now).contains("recent"))
+    }
+
+    @Test
+    fun `generateFromEntries on empty list has no misleading window`() {
+        assertEquals("No activity recorded.", StandupGenerator.generateFromEntries(emptyList()))
+    }
+
     private fun createEntry(
         text: String,
         type: EntryType,
@@ -96,5 +130,9 @@ class StandupGeneratorTest {
             branchName = branchName,
             commitHash = commitHash,
         )
+    }
+
+    private companion object {
+        const val HOUR = 3_600_000L
     }
 }

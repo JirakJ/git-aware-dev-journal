@@ -11,32 +11,23 @@ and file position automatically. Stop losing the reasoning behind your code deci
 
 <h3>Features</h3>
 <ul>
-    <li><b>Git-Linked Notes</b> — Entries auto-linked to commit hash, branch, and file position</li>
-    <li><b>6 Entry Types</b> — Notes, Decisions, TODOs, Blockers, Insights, Questions</li>
-    <li><b>Auto-Capture</b> — Conventional commits parsed into journal entries automatically</li>
-    <li><b>Branch Narratives</b> — Auto-generated story of your work on each branch</li>
-    <li><b>Timeline View</b> — Chronological view with search and filters</li>
-    <li><b>Code Hover Context</b> — See why code was written by hovering over annotated lines</li>
-</ul>
-
-<ul>
-    <li>Standup generator (Markdown/Slack format)</li>
-    <li>PR/MR summary generator</li>
-    <li>Unlimited notes</li>
-    <li>Cross-device sync</li>
-    <li>Team sharing via .dev-journal/ directory</li>
-    <li>Export (Markdown, JSON, CSV)</li>
+    <li><b>Git-Linked Entries</b> — each entry records the current branch and HEAD commit (Git plugin optional) plus file and line</li>
+    <li><b>6 Entry Types</b> — Notes, Decisions, TODOs, Blockers, Insights, Questions, with tags</li>
+    <li><b>Dev Journal Tool Window</b> — sortable table with branch filter and text/tag search</li>
+    <li><b>Copy Standup</b> — Markdown standup of recent entries (configurable time window)</li>
+    <li><b>Copy Branch Summary</b> — all entries on the selected branch, grouped by type</li>
+    <li><b>Plain JSON Storage</b> — <code>.dev-journal/entries.json</code> in your project, easy to commit and share</li>
 </ul>
 
 <h3>Requirements</h3>
 <ul>
-    <li>IntelliJ IDEA 2024.1+ (or any JetBrains IDE)</li>
-    <li>Git repository</li>
+    <li>IntelliJ IDEA 2023.2+ or another IntelliJ-based IDE</li>
+    <li>Git plugin (optional) for branch/commit capture</li>
 </ul>
 
 <h3>Support</h3>
 <p>
-    <a href="https://github.com/JirakJ/git-aware-dev-journal/issues">Documentation</a> |
+    <a href="https://github.com/JirakJ/git-aware-dev-journal">Documentation</a> |
     <a href="https://github.com/JirakJ/git-aware-dev-journal/issues">Issue Tracker</a> |
     <a href="https://github.com/JirakJ/git-aware-dev-journal/issues">Contact Support</a>
 </p>]]></description>
@@ -93,18 +84,5 @@ and file position automatically. Stop losing the reasoning behind your code deci
     <change-notes><![CDATA[
         <h3>2026.8.0</h3><ul><li>The plugin is now completely free — all features unlocked, no license needed.</li><li>Source code is now open source under Apache-2.0: https://github.com/JirakJ/git-aware-dev-journal</li></ul>
 
-        <h3>What's New</h3>
-        <ul>
-            <li><b>Git-Linked Journal Entries</b> - Notes automatically linked to commit hash, branch, and file position</li>
-            <li><b>Six Entry Types</b> - Notes, Decisions, TODOs, Blockers, Insights, and Questions for organized journaling</li>
-            <li><b>Auto-Capture from Commits</b> - Conventional commits (feat, fix, docs, refactor) are automatically parsed into journal entries</li>
-            <li><b>Branch Narratives</b> - Auto-generated story of your work on each branch</li>
-            <li><b>Timeline View</b> - Chronological view of all entries with filtering and search</li>
-            <li><b>Code Hover Context</b> - See why code was written by hovering over annotated lines</li>
-            <li><b>Blame View Integration</b> - Extra note column in git blame showing associated journal entries</li>
-            <li><b>Standup Generator</b> - Generate Markdown or Slack-compatible standup reports from your journal</li>
-            <li><b>PR Summary Generator</b> - Create pull request descriptions from journal entries</li>
-            <li><b>Team Sharing</b> - Share journal entries via .dev-journal/ directory in your repository</li>
-        </ul>
     ]]></change-notes>
 </idea-plugin>

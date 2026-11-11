@@ -1,5 +1,6 @@
 package com.jakubjirak.devjournal.ui
 
+import com.jakubjirak.devjournal.store.JournalRepository
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
@@ -18,14 +19,7 @@ class AddJournalEntryAction : AnAction() {
         val editor = e.getData(CommonDataKeys.EDITOR)
         val file = e.getData(CommonDataKeys.VIRTUAL_FILE)
 
-        val filePath = file?.path?.let { path ->
-            val basePath = project.basePath
-            if (basePath != null && path.startsWith(basePath)) {
-                path.removePrefix(basePath).removePrefix("/")
-            } else {
-                path
-            }
-        }
+        val filePath = file?.path?.let { JournalRepository.relativePath(project.basePath, it) }
 
         val lineNumber = editor?.let {
             it.caretModel.logicalPosition.line + 1
@@ -37,9 +31,8 @@ class AddJournalEntryAction : AnAction() {
             prefilledLineNumber = lineNumber,
         )
 
-        if (dialog.showAndGet()) {
-            // Entry was added via the dialog — refresh tool window if open
-        }
+        // The tool window listens to JournalStore changes, so no explicit refresh is needed.
+        dialog.show()
     }
 
     override fun update(e: AnActionEvent) {
