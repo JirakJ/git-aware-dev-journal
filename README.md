@@ -1,6 +1,6 @@
 # Git-Aware Dev Journal
 
-[![Build](https://github.com/JirakJ/git-aware-dev-journal/actions/workflows/build.yml/badge.svg)](https://github.com/JirakJ/git-aware-dev-journal/actions/workflows/build.yml)
+[![Build](https://github.com/JirakJ/git-aware-dev-journal/actions/workflows/verify.yml/badge.svg)](https://github.com/JirakJ/git-aware-dev-journal/actions/workflows/verify.yml)
 [![Version](https://img.shields.io/badge/version-2026.8.0-blue.svg)](https://github.com/JirakJ/git-aware-dev-journal/releases)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 
@@ -10,20 +10,12 @@
 
 ## ✨ Features
 
-- **Journal entries** — notes, decisions, TODOs, blockers, insights, questions
-- **Git-linked notes** — every entry tied to a commit hash, branch, and file position
-- **Auto-capture** — parses conventional commits (`feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `chore:`, `perf:`)
-- **Branch narratives** — automatic story of work done on a branch
-- **Timeline view** — chronological overview with filtering and search in the Dev Journal tool window
-- **Commit linking & blame view** — notes visible in Git blame as an extra column
-- **Code hover** — "Why did I write this?" context on hover
-- **Standup generator** — "What I did yesterday" from commits + notes (Markdown, plain text, Slack-compatible)
-- **PR/MR summary generator** — release notes grouped by type (features, fixes, chores)
-- **Unlimited notes** — no cap on journal entries per project
-- **Cross-device sync** — sync notes between machines
-- **Team sharing** — shared `.dev-journal/` directory
-- **Advanced search & filters** — by author, branch, date range, entry type
-- **Export** — Markdown, JSON, CSV
+- **Journal entries** — Note, Decision, TODO, Blocker, Insight, Question, with comma-separated tags
+- **Git-linked** — each entry records the current branch and HEAD commit (Git plugin optional) plus file and line
+- **Dev Journal tool window** — sortable table with branch filter and text/tag search; refreshes when entries are added
+- **Copy Standup** — Markdown standup of the entries from the configured time window, copied to the clipboard
+- **Copy Branch Summary** — all entries recorded on the selected branch, grouped by type
+- **Plain JSON storage** — `.dev-journal/entries.json` in the project, easy to commit and share with the team
 
 ## 📦 Installation
 
@@ -39,49 +31,33 @@
 
 ## 🚀 Quick Start
 
-1. Open the **Dev Journal** tool window (bottom panel)
-2. Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>J</kbd> to add a journal entry at the current cursor position
-3. The entry is automatically linked to the current HEAD commit and branch
-4. Enable auto-capture to automatically create entries from conventional commits
+1. Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>J</kbd> in the editor (or right-click → **Add Journal Entry**, or **Tools → Add Journal Entry**)
+2. Pick a type, write the entry, optionally add tags — the current file/line, branch and HEAD commit are recorded
+3. Open the **Dev Journal** tool window (bottom panel) to browse, filter and search your entries
 
 ## ⚙️ Configuration
 
-Open **Settings → Tools → Git-Aware Dev Journal** to configure the plugin.
+Open **Settings → Tools → Git-Aware Dev Journal**.
 
 | Setting | Default | Description |
 |---------|---------|-------------|
-| `autoCaptureEnabled` | `true` | Automatically capture entries from conventional commits |
-| `standupTimeWindow` | `24` | Time window in hours for standup generation (e.g., 24 = last 24 hours) |
-| `storagePath` | `.dev-journal` | Directory for journal storage relative to project root |
+| Standup time window (hours) | `24` | How far back **Copy Standup** looks (1–168) |
+| Journal directory | `.dev-journal` | Where `entries.json` is stored — relative to the project root or absolute; applied when the project is reopened |
 
 ## 🎯 Usage
 
-### Adding a Journal Entry
-- Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>J</kbd> anywhere in the editor
-- Or right-click → **Add Journal Entry** from the editor context menu
-- Or use **Tools → Add Journal Entry**
-- Each entry is linked to the current commit, branch, and file/line position
+### Standup
+Click **Copy Standup** in the tool window. Entries newer than the configured window are grouped by type, with branch and
+short commit hash, and a "Branches worked on" section; the Markdown is copied to the clipboard.
 
-### Auto-Capture from Conventional Commits
-When enabled, the plugin automatically creates journal entries from conventional commit messages:
-- `feat:` → FEATURE entry
-- `fix:` → BUGFIX entry
-- `refactor:` → REFACTOR entry
-- `docs:` → DOCS entry
-- `test:` → TEST entry
-- `perf:` → PERFORMANCE entry
-
-### Branch Narratives
-Navigate to a feature branch in the Dev Journal tool window to see an automatically generated story of all work done on that branch — commits, notes, and statistics.
-
-### Code Hover — "Why Did I Write This?"
-Hover over any line of code to see journal entries from when that code was last modified, including commit context, author, and attached notes.
-
-### Standup Generator
-Generate a "What I did yesterday" report from your commits and notes. Configurable time range and output format (Markdown, plain text, Slack-compatible).
+### Branch summary
+Select a branch in the branch filter and click **Copy Branch Summary** to copy all entries recorded on that branch in
+chronological order, grouped by type.
 
 ### Storage
-Journal data is stored in `.dev-journal/` in your project root as Git-tracked JSON files (one file per branch). Lock files are automatically added to `.gitignore`.
+All entries are stored in a single pretty-printed JSON file, `<journal directory>/entries.json`. Commit the directory to
+share the journal with your team, or add it to `.gitignore` to keep it private. Unreadable or corrupt files are logged
+and the journal starts empty rather than failing.
 
 ## 🔌 Keyboard Shortcuts
 
@@ -91,9 +67,8 @@ Journal data is stored in `.dev-journal/` in your project root as Git-tracked JS
 
 ## 📋 Requirements
 
-- IntelliJ IDEA 2024.3+ (or any JetBrains IDE based on IntelliJ Platform 2024.3+)
+- IntelliJ IDEA 2023.2+ (or another IntelliJ-based IDE, build 232+)
 - Git4Idea (optional — Git features degrade gracefully without it)
-- JVM 17+
 
 ## 🏗️ Building from Source
 

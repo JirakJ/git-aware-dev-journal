@@ -1,10 +1,10 @@
 package com.jakubjirak.devjournal.ui
 
-import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.DialogWrapper
 import com.jakubjirak.devjournal.git.GitContextProvider
 import com.jakubjirak.devjournal.model.EntryType
+import com.jakubjirak.devjournal.store.JournalRepository
 import com.jakubjirak.devjournal.store.JournalStore
 import java.awt.GridBagConstraints
 import java.awt.GridBagLayout
@@ -74,11 +74,7 @@ class AddEntryDialog(
         }
 
         val entryType = typeCombo.selectedItem as EntryType
-        val tags = tagsField.text
-            ?.split(",")
-            ?.map { it.trim() }
-            ?.filter { it.isNotEmpty() }
-            ?: emptyList()
+        val tags = JournalRepository.parseTags(tagsField.text)
 
         var branchName: String? = null
         var commitHash: String? = null
@@ -104,9 +100,5 @@ class AddEntryDialog(
         )
 
         super.doOKAction()
-    }
-
-    companion object {
-        private val LOG = Logger.getInstance(AddEntryDialog::class.java)
     }
 }

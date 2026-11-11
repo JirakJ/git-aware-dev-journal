@@ -1,16 +1,20 @@
 package com.jakubjirak.devjournal.standup
 
 import com.jakubjirak.devjournal.model.JournalEntry
-import com.jakubjirak.devjournal.settings.DevJournalSettings
 
 /**
  * Generates standup summaries from recent journal entries and commit activity.
  */
 object StandupGenerator {
 
-    fun generate(allEntries: List<JournalEntry>, timeWindowHours: Int? = null): String {
-        val hours = timeWindowHours ?: DevJournalSettings.getInstance().standupTimeWindow
-        val cutoff = System.currentTimeMillis() - (hours * MILLIS_PER_HOUR)
+    /** Standup over entries newer than [timeWindowHours] before [nowMillis], newest first. */
+    fun generate(
+        allEntries: List<JournalEntry>,
+        timeWindowHours: Int,
+        nowMillis: Long = System.currentTimeMillis(),
+    ): String {
+        val hours = timeWindowHours.coerceAtLeast(1)
+        val cutoff = nowMillis - hours * MILLIS_PER_HOUR
 
         val recentEntries = allEntries
             .filter { it.timestamp >= cutoff }
@@ -20,12 +24,12 @@ object StandupGenerator {
     }
 
     fun generateFromEntries(entries: List<JournalEntry>): String {
-        return formatStandup(entries, 0)
+        return formatStandup(entries, null)
     }
 
-    internal fun formatStandup(entries: List<JournalEntry>, hours: Int): String {
+    internal fun formatStandup(entries: List<JournalEntry>, hours: Int?): String {
         if (entries.isEmpty()) {
-            return "No activity recorded in the last $hours hours."
+            return if (hours == null) "No activity recorded." else "No activity recorded in the last $hours hours."
         }
 
         val sb = StringBuilder()

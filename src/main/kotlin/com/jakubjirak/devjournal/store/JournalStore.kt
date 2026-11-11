@@ -1,8 +1,5 @@
 package com.jakubjirak.devjournal.store
 
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import com.google.gson.reflect.TypeToken
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.project.Project
@@ -11,63 +8,37 @@ import com.jakubjirak.devjournal.model.JournalEntry
 import com.jakubjirak.devjournal.settings.DevJournalSettings
 import java.io.File
 import java.util.UUID
+import java.util.concurrent.CopyOnWriteArrayList
 
 /**
  * Project-level service that manages journal entries.
- * Persists entries to `.dev-journal/entries.json` in the project root.
+ * Persists entries to `<storagePath>/entries.json` (default `.dev-journal/entries.json`) in the project root.
  */
 @Service(Service.Level.PROJECT)
 class JournalStore(private val project: Project) {
 
-    private val entries = mutableListOf<JournalEntry>()
-    private val gson: Gson = GsonBuilder().setPrettyPrinting().create()
+    private val repository = JournalRepository(storageFile())
+    private val listeners = CopyOnWriteArrayList<() -> Unit>()
 
     init {
-        loadEntries()
-    }
-
-    fun addEntry(entry: JournalEntry) {
-        entries.add(entry)
-        saveEntries()
-        LOG.info("Added journal entry: ${entry.id}")
-    }
-
-    fun removeEntry(id: String) {
-        entries.removeAll { it.id == id }
-        saveEntries()
-    }
-
-    fun updateEntry(updated: JournalEntry) {
-        val index = entries.indexOfFirst { it.id == updated.id }
-        if (index >= 0) {
-            entries[index] = updated
-            saveEntries()
+        synchronized(repository) {
+            repository.load()
+            logError()
         }
     }
 
-    fun getAllEntries(): List<JournalEntry> = entries.toList()
-
-    fun getEntriesByBranch(branchName: String): List<JournalEntry> =
-        entries.filter { it.branchName == branchName }
-
-    fun getEntriesByType(type: EntryType): List<JournalEntry> =
-        entries.filter { it.entryType == type }
-
-    fun getEntriesSince(timestampMillis: Long): List<JournalEntry> =
-        entries.filter { it.timestamp >= timestampMillis }
-
-    fun searchEntries(query: String): List<JournalEntry> {
-        val lowerQuery = query.lowercase()
-        return entries.filter {
-            it.text.lowercase().contains(lowerQuery) ||
-                it.tags.any { tag -> tag.lowercase().contains(lowerQuery) }
-        }
+    /** Registers a callback invoked (on the calling thread) after every change. */
+    fun addChangeListener(listener: () -> Unit) {
+        listeners.add(listener)
     }
 
-    fun createEntry(entry: JournalEntry): JournalEntry {
-        addEntry(entry)
-        return entry
+    fun removeChangeListener(listener: () -> Unit) {
+        listeners.remove(listener)
     }
+
+    fun addEntry(entry: JournalEntry) = mutate { repository.add(entry) }
+
+    fun getAllEntries(): List<JournalEntry> = synchronized(repository) { repository.all() }
 
     fun newEntry(
         text: String,
@@ -101,39 +72,20 @@ class JournalStore(private val project: Project) {
         val tags: List<String> = emptyList(),
     )
 
-    fun getEntryCount(): Int = entries.size
-
-    private fun getStorageFile(): File {
-        val basePath = project.basePath ?: return File(".dev-journal/entries.json")
-        val storagePath = DevJournalSettings.getInstance().storagePath
-        return File(basePath, "$storagePath/entries.json")
-    }
-
-    private fun loadEntries() {
-        try {
-            val file = getStorageFile()
-            if (file.exists()) {
-                val json = file.readText()
-                val type = object : TypeToken<List<JournalEntry>>() {}.type
-                val loaded: List<JournalEntry> = gson.fromJson(json, type)
-                entries.clear()
-                entries.addAll(loaded)
-                LOG.info("Loaded ${entries.size} journal entries")
-            }
-        } catch (e: Exception) {
-            LOG.warn("Failed to load journal entries", e)
+    private fun mutate(change: () -> Unit) {
+        synchronized(repository) {
+            change()
+            logError()
         }
+        listeners.forEach { it() }
     }
 
-    private fun saveEntries() {
-        try {
-            val file = getStorageFile()
-            file.parentFile?.mkdirs()
-            file.writeText(gson.toJson(entries))
-        } catch (e: Exception) {
-            LOG.warn("Failed to save journal entries", e)
-        }
+    private fun logError() {
+        repository.lastError?.let { LOG.warn(it) }
     }
+
+    private fun storageFile(): File =
+        JournalRepository.resolveStorageFile(project.basePath, DevJournalSettings.getInstance().storagePath)
 
     companion object {
         private val LOG = Logger.getInstance(JournalStore::class.java)
