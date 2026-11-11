@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [2026.9.0] - 2026-11-11
+
 ### Added
 - **Copy Standup** and **Copy Branch Summary** buttons in the Dev Journal tool window (the standup time-window setting now has an effect).
 
